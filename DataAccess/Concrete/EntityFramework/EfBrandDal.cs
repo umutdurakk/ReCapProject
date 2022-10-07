@@ -1,28 +1,30 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : ICarDal
+    internal class EfBrandDal : IBrandDal
     {
-        public void Add(Car Entity)
+        public void Add(Brand Entity)
         {
-            using (EfRcpContext context = new EfRcpContext())
+           using (EfRcpContext context = new EfRcpContext())
             {
-                var addedContext = context.Entry(Entity);
+                var addedContext= context.Entry(Entity);
                 addedContext.State = EntityState.Added;
                 context.SaveChanges();
             }
         }
 
-        public void Delete(Car Entity)
+        public void Delete(Brand Entity)
         {
             using (EfRcpContext context = new EfRcpContext())
             {
@@ -32,25 +34,25 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
             using (EfRcpContext context = new EfRcpContext())
             {
-                return filter == null ? context.Set<Car>().ToList() :
-                    context.Set<Car>().Where(filter).ToList();
+                return filter == null ? context.Set<Brand>().ToList() :
+                    context.Set<Brand>().Where(filter).ToList() ;
             }
-
+            
         }
 
-        public Car GetById(Expression<Func<Car, bool>> filter)
+        public Brand GetById(Expression<Func<Brand, bool>> filter)
         {
             using (EfRcpContext context = new EfRcpContext())
             {
-                return context.Set<Car>().FirstOrDefault(filter);
+                return context.Set<Brand>().FirstOrDefault(filter);
             }
         }
 
-        public void Update(Car Entity)
+        public void Update(Brand Entity)
         {
             using (EfRcpContext context = new EfRcpContext())
             {

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : ICarDal
+    internal class EfColorDal : IColorDal
     {
-        public void Add(Car Entity)
+        public void Add(Color Entity)
         {
             using (EfRcpContext context = new EfRcpContext())
             {
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public void Delete(Car Entity)
+        public void Delete(Color Entity)
         {
             using (EfRcpContext context = new EfRcpContext())
             {
@@ -32,31 +32,30 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
-        {
-            using (EfRcpContext context = new EfRcpContext())
-            {
-                return filter == null ? context.Set<Car>().ToList() :
-                    context.Set<Car>().Where(filter).ToList();
-            }
-
-        }
-
-        public Car GetById(Expression<Func<Car, bool>> filter)
-        {
-            using (EfRcpContext context = new EfRcpContext())
-            {
-                return context.Set<Car>().FirstOrDefault(filter);
-            }
-        }
-
-        public void Update(Car Entity)
+        public void Update(Color Entity)
         {
             using (EfRcpContext context = new EfRcpContext())
             {
                 var updatedContext = context.Entry(Entity);
                 updatedContext.State = EntityState.Modified;
                 context.SaveChanges();
+            }
+        }
+
+        public List<Color>  GetAll(Expression<Func<Color, bool>> filter)
+        {
+            using (EfRcpContext context = new EfRcpContext())
+            {
+                return filter == null ? context.Set<Color>().ToList() :
+                    context.Set<Color>().Where(filter).ToList();
+            }
+        }
+
+        public Color GetById(Expression<Func<Color, bool>> filter)
+        {
+            using (EfRcpContext context = new EfRcpContext())
+            {
+                return context.Set<Color>().FirstOrDefault(filter);
             }
         }
     }
