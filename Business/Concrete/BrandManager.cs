@@ -18,19 +18,32 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public void Insert(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandDal.Add(brand);
         }
 
-        public Brand Get(int brandId)
-        {
-           return _brandDal.GetById(b=>b.BrandId==brandId);
-        }
-
+        
         public List<Brand> GetAll()
         {
             return _brandDal.GetAll();
         }
+
+        public Brand GetById(int id)
+        {
+            return _brandDal.GetById(b => b.BrandId == id);
+        }
+
+        public void Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+        }
+
+        public void Delete(Brand brand)
+        {
+            _brandDal.Delete(brand);
+        }
+
+       
     }
 }
