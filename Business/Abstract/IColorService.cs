@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    internal interface IColorService
+    public interface IColorService
     {
+        List<Color> GetAll();
+
+        Color Get(int colorId);
+
+        void Add(Color color);
     }
 }
