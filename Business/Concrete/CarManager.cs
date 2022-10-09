@@ -67,5 +67,10 @@ namespace Business.Concrete
             _carDal.Delete(car);
             return new SuccessResult(Message.CarDelete);
         }
+
+        public IDataResult<Car> GetById(int id)
+        {
+            return new SuccessDataResult<Car>(_carDal.GetById(c => c.Id == id),Message.CarListed);
+        }
     }
 }

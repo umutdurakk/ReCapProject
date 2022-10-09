@@ -19,6 +19,7 @@ namespace Business.Constants
         public static string CarsDetailListed = "Araba Detayları listelendi.";
         public static string CarsByBrandListed = "Araba markasına göre listelendi.";
         public static string GetCarsByColorListed = "Arabalar renklere göre listelendi.";
+        public static string CarListed = "Araba gösteriliyor.";
 
         //Brand
         public static string BrandAdded = "Marka eklendi.";
@@ -50,5 +51,5 @@ namespace Business.Constants
         public static string UserListed = "Kullanıcı gösterildi.";
 
         
-            }
+    }
 }

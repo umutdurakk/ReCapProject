@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    internal class EfBrandDal : EfEntityRepositoryBase<Brand, EfRcpContext>, IBrandDal
+    public class EfBrandDal : EfEntityRepositoryBase<Brand, EfRcpContext>, IBrandDal
     {
       
 

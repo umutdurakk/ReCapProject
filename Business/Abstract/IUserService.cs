@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IUserService
+    public interface IUserService:IBaseService<User>
     {
-        IDataResult<List<User>> GetAll();
-
-        IDataResult<User> GetById(int userId);
-
-        IResult Insert(User user);
-        IResult Update(User user);
-        IResult Delete(User user);
+      
     }
 }

@@ -11,7 +11,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            
+           // getDetailCustomerTest();
         }
 
         private static void getDetailCustomerTest()
