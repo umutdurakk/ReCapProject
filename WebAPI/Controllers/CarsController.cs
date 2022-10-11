@@ -23,6 +23,7 @@ namespace WebAPI.Controllers
             var result = _carService.GetAll();
             if (result.Success)
             {
+                Console.WriteLine("Esmanur Şaybak");
                 return Ok(result);
             }
             return BadRequest(result);
