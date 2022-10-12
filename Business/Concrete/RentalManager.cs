@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -39,6 +40,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.GetById(r=>r.RentalId==rentalId), Message.RentalListed);
         }
 
+       
         public IResult Insert(Rental rental)
         {
             if (rental.ReturnDate==null)
