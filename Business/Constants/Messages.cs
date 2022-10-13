@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Constants
 {
-    public static class Message
+    public static class Messages
     {
         public static string MaintenanceTime = "Sistem Bakımda.";
 
@@ -50,6 +50,8 @@ namespace Business.Constants
         public static string UsersListed = "Kullanıcılar listelendi";
         public static string UserListed = "Kullanıcı gösterildi.";
 
-        
+        public static string ItemAdded { get; internal set; }
+        public static string ImagesGettingDone { get; internal set; }
+        public static string ImageGettingDone { get; internal set; }
     }
 }

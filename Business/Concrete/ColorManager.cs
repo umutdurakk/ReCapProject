@@ -24,7 +24,7 @@ namespace Business.Concrete
         public IResult Insert(Color color)
         {
             _colorDal.Add(color);
-            return new SuccessResult(Message.BrandAdded);
+            return new SuccessResult(Messages.BrandAdded);
         }
 
 

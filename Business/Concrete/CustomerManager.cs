@@ -25,34 +25,34 @@ namespace Business.Concrete
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
-            return new SuccessResult(Message.CustomerDelete);
+            return new SuccessResult(Messages.CustomerDelete);
         }
 
         public IDataResult<List<Customer>> GetAll()
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Message.CustomersListed);
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CustomersListed);
         }
 
         public IDataResult<Customer> GetById(int customerId)
         {
-            return new SuccessDataResult<Customer>(_customerDal.GetById(c => c.CustomerId == customerId), Message.CustomerListed);
+            return new SuccessDataResult<Customer>(_customerDal.GetById(c => c.CustomerId == customerId), Messages.CustomerListed);
         }
 
         public IDataResult<List<CustomerDetailDto>> getCustomerDetail()
         {
-            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.customerDetailDtos(), Message.CustomerDetailListed);
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.customerDetailDtos(), Messages.CustomerDetailListed);
         }
 
         public IResult Insert(Customer customer)
         {
             _customerDal.Add(customer);
-            return new SuccessResult(Message.CustomerAdded);
+            return new SuccessResult(Messages.CustomerAdded);
         }
 
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);
-            return new SuccessResult(Message.CustomerUpdated);
+            return new SuccessResult(Messages.CustomerUpdated);
         }
     }
 }

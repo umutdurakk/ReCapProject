@@ -27,17 +27,17 @@ namespace Business.Concrete
         {
             
             _rentalDal.Delete(rental);
-            return new SuccessResult(Message.DeletedRental);
+            return new SuccessResult(Messages.DeletedRental);
         }
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Message.RentalsListed);
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalsListed);
         }
 
         public IDataResult<Rental> GetById(int rentalId)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.GetById(r=>r.RentalId==rentalId), Message.RentalListed);
+            return new SuccessDataResult<Rental>(_rentalDal.GetById(r=>r.RentalId==rentalId), Messages.RentalListed);
         }
 
        
@@ -45,17 +45,17 @@ namespace Business.Concrete
         {
             if (rental.ReturnDate==null)
             {
-                return new ErrorResult(Message.RentalAddError);
+                return new ErrorResult(Messages.RentalAddError);
             }
             _rentalDal.Add(rental);
-            return new SuccessResult(Message.AddedRental);
+            return new SuccessResult(Messages.AddedRental);
         }
 
         public IResult Update(Rental rental)
         {
             
             _rentalDal.Update(rental);
-            return new SuccessResult(Message.UpdatedRental);
+            return new SuccessResult(Messages.UpdatedRental);
         }
     }
 }
