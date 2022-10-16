@@ -9,26 +9,24 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CarImagesController : ControllerBase
     {
+        ICarImageService _carImageService;
 
-        private ICarImageService _carImageService;
-
-        public CarImagesController(ICarImageService carImageService)
+        public CarImagesController(ICarImageService imageService)
         {
-            _carImageService = carImageService;
+            _carImageService=imageService;
         }
 
-        [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile file, [FromForm] CarImage carImage)
+        [HttpPost("Add")]
+        public IActionResult Add([FromForm] IFormFile file,[FromForm] CarImage carImage)
         {
-            var result = _carImageService.Add(file, carImage);
+            var result=_carImageService.Add(file,carImage);
             if (result.Success)
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
+            
         }
-
         [HttpPost("update")]
         public IActionResult Update([FromForm] IFormFile file, [FromForm] CarImage carImage)
         {
@@ -52,9 +50,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getbycarimageid")]
-        public IActionResult GetByCarImageId(int carId)
+        public IActionResult GetByCarImageId(int carImageId)
         {
-            var result = _carImageService.GetByImageId(carId);
+            var result = _carImageService.GetByImageId(carImageId);
             if (result.Success)
             {
                 return Ok(result);
@@ -83,7 +81,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-       
-    
+
+
     }
 }

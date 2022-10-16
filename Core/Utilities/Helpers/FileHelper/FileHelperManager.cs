@@ -1,12 +1,12 @@
-﻿using Core.Utilities.Helpers.FileHelper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Utilities.Helpers
+namespace Core.Utilities.Helpers.FileHelper
 {
     public class FileHelperManager : IFileHelper
     {
@@ -16,7 +16,6 @@ namespace Core.Utilities.Helpers
             {
                 File.Delete(filePath);
             }
-
         }
 
         public string Update(IFormFile file, string filePath, string root)
@@ -25,29 +24,26 @@ namespace Core.Utilities.Helpers
             {
                 File.Delete(filePath);
             }
-
-            return Upload(file, root);
+           return Upload(file, root);
         }
-
 
         public string Upload(IFormFile file, string root)
         {
-            if (file.Length > 0)
+            if (file.Length>0)
             {
                 if (!Directory.Exists(root))
                 {
                     Directory.CreateDirectory(root);
                 }
 
-                string imageExtension = Path.GetExtension(file.FileName);
-                string imageName = Guid.NewGuid().ToString() + imageExtension;
+                var Extension=Path.GetExtension(file.FileName);
+                var imageName = Guid.NewGuid().ToString() + Extension;
 
-                using (FileStream fileStream = File.Create(root + imageName))
+                using(FileStream fileStream = File.Create(root + imageName))
                 {
                     file.CopyTo(fileStream);
                     fileStream.Flush();
                     return imageName;
-
                 }
             }
             return null;
